@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Note</title>
+  <style>
+    body {
+      background: #181a1b;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: #23272b;
+      padding: 2rem 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      width: 350px;
+      max-width: 90vw;
+    }
+    h2 {
+      margin-top: 0;
+      color: #fdfcfb;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #00abea;
+      font-weight: 500;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.2rem;
+      border: none;
+      border-radius: 6px;
+      background: #282c34;
+      color: #f1f1f1;
+      font-size: 1rem;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus, textarea:focus {
+      outline: 2px solid #ffffff;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid rgb(15, 15, 15);;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #000000;
+      border: 1px solid white;
+      transition: all;
+    }
+    .back-link {
+      display: block;
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #8be9fd;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover {
+      color: #5091fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Add New Note</h2>
+    <form action="/notes" method="POST" autocomplete="off">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" required autocomplete="off" placeholder="Enter note title">
+
+      <label for="content">Content</label>
+      <textarea id="content" name="content" rows="7" required placeholder="Write your note here"></textarea>
+
+      <button type="submit">Save</button>
+    </form>
+    <a class="back-link" href="/notes">&#8592; Back to Notes</a>
+  </div>
+</body>
+</html>
