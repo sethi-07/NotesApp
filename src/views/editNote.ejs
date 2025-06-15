@@ -95,7 +95,7 @@
 </head>
 <body>
   <div class="container">
-    <form action="/notes/edit/<%= note._id %>" method="POST" autocomplete="off">
+    <form action="/editNote/<%= note._id %>" method="POST" autocomplete="off">
       <input
         type="text"
         id="title"
@@ -111,7 +111,7 @@
 
       <button type="submit">Save</button>
     </form>
-    <a class="back-link" href="/notes">&#8592; Back to Notes</a>
+    <a class="back-link" href="/">&#8592; Back to Notes</a>
   </div>
 </body>
 </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Noted.</title>
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            margin: 40px;
+            background: #181a1b;
+            color: #f1f1f1;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 3.5rem;
+            /* letter-spacing: 2px; */
+            color: #ffffff;
+            /* text-shadow: 0 2px 8px #000a; */
+            transition: color 0.7s cubic-bezier(0.4,0,0.2,1);
+            color: transparent;
+            background: linear-gradient(90deg,  #00ffe1, #ff0606, #00bfff7d,  #ffea00);
+            background-size: 200% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            transition: background-position 1s cubic-bezier(0.4,0,0,1);
+        }
+        h1:hover {
+            background-position: 60% 0;
+        }
+        .notes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .note-card {
+            background: #23272b;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+            /* transition: transform 0.15s; */
+        }
+        .note-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 2px 11px #fffffff9;
+            transition: transform 1s;
+        }
+        .add-note-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 8px 12px;
+            background: linear-gradient(90deg, #0c5269 20%, #052d58 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 18px;
+            /* font-weight: bold; */
+            box-shadow: 0 2px 8px #007bff44;
+            transition: background 2s;
+        }
+        .add-note-btn:hover {
+            background: linear-gradient(90deg, #0c7a9e 40%, #165eaa 100%);
+        }
+        .note-card h3 {
+            color: #0c6f90;
+            margin-top: 0;
+        }
+        .note-card p {
+            color: #e0e0e0;
+        }
+        .note-card form {
+            margin-top: 15px;
+        }
+        .note-card button[type="submit"] {
+            background: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .note-card button[type="submit"]:hover {
+            background: #b52a37;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stay goated. Noted.</h1>
+    <div style="text-align:center;">
+        <a href="/addNote" class="add-note-btn">New note maybe?</a>
+    </div>
+    <div class="notes-container">
+    <% if (notes && notes.length > 0) { %>
+        <% notes.forEach(function(note) { %>
+            <div class="note-card">
+                <a href="/editNote/<%= note._id %>" style="text-decoration:none;">
+                    <h3><%= note.title %></h3>
+                </a>
+                <form action="/deleteNote/<%= note._id %>" method="POST">
+                    <button type="submit">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>No notes found.</p>
+    <% } %>
+</div>
+</body>
+</html>
